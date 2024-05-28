@@ -12,20 +12,6 @@ body {
   align-items: center;
 }
 
-.error-div {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
-  background: lightpink;
-  gap: 2vh;
-  padding: 10px;
-  position: absolute;
-  bottom: 5%;
-}
-
 .container {
   display: flex;
   flex-direction: column;

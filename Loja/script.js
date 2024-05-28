@@ -10,14 +10,14 @@ window.onload = function () {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Fetch dos produtos e armazenamento na variável global
   fetch("../Dados/loja.json")
     .then((response) => response.json())
     .then((data) => {
       produtos = data;
-      const produtosContainer = document.getElementById("produtos-container");
+      const produtosContainer =
+        document.getElementsByTagName("produtos-container");
 
-      produtos.forEach((produto, index) => {
+      produtos.map((produto, index) => {
         const card = document.createElement("div");
         card.className = "card";
         card.style.width = "18rem";
@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Erro ao carregar o arquivo JSON", error));
 
-  // Manipulador de eventos para o botão "Adicionar ao Carrinho"
   $("#produtos-container").on(
     "click",
     ".btn-adicionar-ao-carrinho",
@@ -67,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
       let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
       carrinho.push(produtoSelecionado);
       localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      alert("Produto adicionado ao carrinho!");
     }
   );
 });
