@@ -4,6 +4,7 @@ let produtos;
 window.onload = function () {
   var storedUser = localStorage.getItem("usuario");
   var user = JSON.parse(storedUser);
+  
   document.getElementById("user").textContent = user.name;
   document.getElementById("perfil").textContent = user.name;
   document.getElementById("idPerfil").textContent = user.id;
@@ -15,13 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       produtos = data;
       const produtosContainer =
-        document.getElementsByTagName("produtos-container");
+        document.getElementById("produtos-container");
 
       produtos.map((produto, index) => {
         const card = document.createElement("div");
         card.className = "card";
-        card.style.width = "18rem";
-        card.style.marginRight = "10px";
 
         const imagem = document.createElement("img");
         imagem.src = produto.imagem;

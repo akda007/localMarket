@@ -13,6 +13,27 @@ function login() {
 
     window.location.href = "../Loja/loja.html";
   } else {
-    //logica para se o nome e senha forem incorretos
+    Toastify({
+      text: "Invalid username/password",
+      duration: 3000,
+      close: true,
+      gravity: "bottom",
+      position: "center",
+      stopOnFocus: true,
+      style: {
+        background: "rgb(238,174,190)",
+        background: "radial-gradient(circle, rgba(238,174,190,1) 0%, rgba(155,148,233,1) 100%)"
+      }
+    }).showToast();
   }
 }
+
+const pwInput = document.querySelector("#senha");
+
+document.querySelector("#revealBt").addEventListener("click", () => {
+  if (pwInput.getAttribute("type") === "password") {
+    pwInput.setAttribute("type", "text");
+  } else {
+    pwInput.setAttribute("type", "password");
+  }
+});

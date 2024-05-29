@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+.roboto-mono-500 {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
 * {
   padding: 0;
   margin: 0;
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
@@ -37,4 +48,29 @@ body {
 input {
   padding: 5px;
   border: 2px solid #909090;
+}
+
+#revealBt {
+  position: absolute;
+  object-fit: cover;
+  width: 20px;
+  height: 20px;
+
+  right: 10px;
+}
+
+#revealBt {
+  color: #909090;
+  transition: 200ms;
+}
+
+#revealBt:hover {
+  color: black;
+}
+
+.password-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
