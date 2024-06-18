@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const produtosContainer =
         document.getElementById("produtos-container");
 
-      produtos.map((produto, index) => {
+
+     
+      produtos.forEach((produto, index) => {
         const card = document.createElement("div");
         card.className = "card";
 
@@ -56,15 +58,38 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.error("Erro ao carregar o arquivo JSON", error));
 
-  $("#produtos-container").on(
-    "click",
-    ".btn-adicionar-ao-carrinho",
-    function () {
-      const indexDoProduto = $(this).data("indice");
-      const produtoSelecionado = produtos[indexDoProduto];
-      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      carrinho.push(produtoSelecionado);
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  $("#produtos-container").on( "click", ".btn-adicionar-ao-carrinho",
+    function (element) {
+      const indexDoProduto = element.currentTarget.getAttribute("data-indice");
+
+      showModal(indexDoProduto)
     }
   );
-});
+
+});   
+
+const modal = document.querySelector(".modal");
+const closeModal = () => modal.classList.remove("visible");
+const openModal = () => modal.classList.add("visible");
+const showModal = (product_index) => {
+  modal.setAttribute("product-index", product_index)
+
+  openModal();
+}
+
+const modalYes = () => {
+  closeModal();
+
+  const indexDoProduto = Number.parseInt(modal.getAttribute("product-index"));
+  const produtoSelecionado = produtos[indexDoProduto];
+
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  carrinho.push(produtoSelecionado);
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+const modalNo = () => {
+  closeModal()
+}
